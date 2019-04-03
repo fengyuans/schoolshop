@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.myo2o.dao.UserShopMapDao">
-	<resultMap id="userShopResultMap" type="com.imooc.myo2o.entity.UserShopMap">
+<mapper namespace="com.my.schoolshop.dao.UserShopMapDao">
+	<resultMap id="userShopResultMap" type="com.my.schoolshop.model.UserShopMap">
 		<id column="user_shop_id" property="userShopId" />
 		<result column="user_id" property="userId" />
 		<result column="shop_id" property="shopId" />
@@ -12,7 +12,7 @@
 		<result column="create_time" property="createTime" />
 		<result column="point" property="point" />
 		<association property="user" column="user_id"
-			javaType="com.imooc.myo2o.entity.PersonInfo">
+			javaType="com.my.schoolshop.model.PersonInfo">
 			<id column="user_id" property="userId" />
 			<result column="name" property="name" />
 			<result column="birthday" property="birthday" />
@@ -28,7 +28,7 @@
 			<result column="enable_status" property="enableStatus" />
 		</association>
 		<association property="shop" column="shop_id"
-			javaType="com.imooc.myo2o.entity.Shop">
+			javaType="com.my.schoolshop.model.Shop">
 			<id column="shop_id" property="shopId" />
 			<result column="shop_name" property="shopName" />
 			<result column="shop_desc" property="shopDesc" />
@@ -103,7 +103,7 @@
 			</if>
 		</where>
 	</select>
-	<select id="queryUserShopMap" resultType="com.imooc.myo2o.entity.UserShopMap"
+	<select id="queryUserShopMap" resultType="com.my.schoolshop.model.UserShopMap"
 		parameterType="long">
 		SELECT
 		user_shop_id,
@@ -120,7 +120,7 @@
 		AND
 		shop_id = #{shopId}
 	</select>
-	<insert id="insertUserShopMap" parameterType="com.imooc.myo2o.entity.UserShopMap"
+	<insert id="insertUserShopMap" parameterType="com.my.schoolshop.model.UserShopMap"
 		useGeneratedKeys="true" keyProperty="userShopId" keyColumn="user_shop_id">
 		INSERT
 		INTO
@@ -130,7 +130,7 @@
 		(#{userId},#{shopId},
 		#{userName},#{shopName},#{createTime},#{point})
 	</insert>
-	<update id="updateUserShopMapPoint" parameterType="com.imooc.myo2o.entity.UserShopMap"
+	<update id="updateUserShopMapPoint" parameterType="com.my.schoolshop.model.UserShopMap"
 		keyProperty="user_shop_id" useGeneratedKeys="true">
 		UPDATE tb_user_shop_map
 		SET point=#{point}

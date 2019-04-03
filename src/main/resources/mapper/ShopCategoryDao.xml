@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.myo2o.dao.ShopCategoryDao">
-	<select id="queryShopCategory" resultType="com.imooc.myo2o.entity.ShopCategory">
+<mapper namespace="com.my.schoolshop.dao.ShopCategoryDao">
+	<select id="queryShopCategory" resultType="com.my.schoolshop.model.ShopCategory">
 		SELECT
 		shop_category_id,
 		shop_category_name,
@@ -29,7 +29,7 @@
 		ORDER BY
 		priority DESC
 	</select>
-	<select id="queryShopCategoryById" resultType="com.imooc.myo2o.entity.ShopCategory">
+	<select id="queryShopCategoryById" resultType="com.my.schoolshop.model.ShopCategory">
 		SELECT
 		shop_category_id,
 		shop_category_name,
@@ -44,7 +44,7 @@
 		WHERE
 		shop_category_id=#{shopCategoryId}
 	</select>
-	<select id="queryShopCategoryByIds" resultType="com.imooc.myo2o.entity.ShopCategory">
+	<select id="queryShopCategoryByIds" resultType="com.my.schoolshop.model.ShopCategory">
 		SELECT
 		shop_category_id,
 		shop_category_name,
@@ -71,7 +71,7 @@
 		(#{shopCategoryName},#{shopCategoryDesc},#{shopCategoryImg},
 		#{priority},#{createTime},#{lastEditTime},#{parentId})
 	</insert>
-	<update id="updateShopCategory" parameterType="com.imooc.myo2o.entity.ShopCategory">
+	<update id="updateShopCategory" parameterType="com.my.schoolshop.model.ShopCategory">
 		update tb_shop_category
 		<set>
 			<if test="shopCategoryName != null">shop_category_name=#{shopCategoryName},</if>

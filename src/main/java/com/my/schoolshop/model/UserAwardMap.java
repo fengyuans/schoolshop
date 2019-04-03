@@ -1,25 +1,29 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.util.Date;
 
-public class UserShopMap {
-	private Long userShopId;
+public class UserAwardMap {
+
+	private Long userAwardId;
 	private Long userId;
+	private Long awardId;
 	private Long shopId;
 	private String userName;
-	private String shopName;
+	private String awardName;
+	private Date expireTime;
 	private Date createTime;
+	private Integer usedStatus;
 	private Integer point;
 	private PersonInfo user;
-	private Product product;
+	private Award award;
 	private Shop shop;
 
-	public Long getUserShopId() {
-		return userShopId;
+	public Long getUserAwardId() {
+		return userAwardId;
 	}
 
-	public void setUserShopId(Long userShopId) {
-		this.userShopId = userShopId;
+	public void setUserAwardId(Long userAwardId) {
+		this.userAwardId = userAwardId;
 	}
 
 	public Long getUserId() {
@@ -28,6 +32,14 @@ public class UserShopMap {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public Long getAwardId() {
+		return awardId;
+	}
+
+	public void setAwardId(Long awardId) {
+		this.awardId = awardId;
 	}
 
 	public Long getShopId() {
@@ -46,12 +58,20 @@ public class UserShopMap {
 		this.userName = userName;
 	}
 
-	public String getShopName() {
-		return shopName;
+	public String getAwardName() {
+		return awardName;
 	}
 
-	public void setShopName(String shopName) {
-		this.shopName = shopName;
+	public void setAwardName(String awardName) {
+		this.awardName = awardName;
+	}
+
+	public Date getExpireTime() {
+		return expireTime;
+	}
+
+	public void setExpireTime(Date expireTime) {
+		this.expireTime = expireTime;
 	}
 
 	public Date getCreateTime() {
@@ -60,6 +80,14 @@ public class UserShopMap {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public Integer getUsedStatus() {
+		return usedStatus;
+	}
+
+	public void setUsedStatus(Integer usedStatus) {
+		this.usedStatus = usedStatus;
 	}
 
 	public Integer getPoint() {
@@ -78,12 +106,12 @@ public class UserShopMap {
 		this.user = user;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Award getAward() {
+		return award;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setAward(Award award) {
+		this.award = award;
 	}
 
 	public Shop getShop() {

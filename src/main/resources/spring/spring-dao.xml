@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 配置整合mybatis过程 -->
 	<!-- 1.配置数据库相关参数properties的属性：${url} -->
-	<bean class="com.my.school.util.EncryptPropertyPlaceholderConfigurer">
+	<bean class="com.my.schoolshop.util.EncryptPropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:jdbc.properties</value>
@@ -42,7 +42,7 @@
 		<!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 扫描entity包 使用别名 -->
-		<property name="typeAliasesPackage" value="com.my.school.model" />
+		<property name="typeAliasesPackage" value="com.my.schoolshop.model" />
 		<!-- 扫描sql配置文件:mapper需要的xml文件 -->
 		<property name="mapperLocations" value="classpath:mapper/*.xml" />
 	</bean>
@@ -52,6 +52,6 @@
 		<!-- 注入sqlSessionFactory -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<!-- 给出需要扫描Dao接口包 -->
-		<property name="basePackage" value="com.my.school.dao" />
+		<property name="basePackage" value="com.my.schoolshop.dao" />
 	</bean>
 </beans>

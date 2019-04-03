@@ -1,29 +1,26 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.util.Date;
 
-public class UserAwardMap {
-
-	private Long userAwardId;
+public class UserProductMap {
+	private Long userProductId;
 	private Long userId;
-	private Long awardId;
+	private Long productId;
 	private Long shopId;
 	private String userName;
-	private String awardName;
-	private Date expireTime;
+	private String productName;
 	private Date createTime;
-	private Integer usedStatus;
 	private Integer point;
 	private PersonInfo user;
-	private Award award;
+	private Product product;
 	private Shop shop;
 
-	public Long getUserAwardId() {
-		return userAwardId;
+	public Long getUserProductId() {
+		return userProductId;
 	}
 
-	public void setUserAwardId(Long userAwardId) {
-		this.userAwardId = userAwardId;
+	public void setUserProductId(Long userProductId) {
+		this.userProductId = userProductId;
 	}
 
 	public Long getUserId() {
@@ -34,12 +31,12 @@ public class UserAwardMap {
 		this.userId = userId;
 	}
 
-	public Long getAwardId() {
-		return awardId;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setAwardId(Long awardId) {
-		this.awardId = awardId;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public Long getShopId() {
@@ -58,20 +55,12 @@ public class UserAwardMap {
 		this.userName = userName;
 	}
 
-	public String getAwardName() {
-		return awardName;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setAwardName(String awardName) {
-		this.awardName = awardName;
-	}
-
-	public Date getExpireTime() {
-		return expireTime;
-	}
-
-	public void setExpireTime(Date expireTime) {
-		this.expireTime = expireTime;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public Date getCreateTime() {
@@ -80,14 +69,6 @@ public class UserAwardMap {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
-	}
-
-	public Integer getUsedStatus() {
-		return usedStatus;
-	}
-
-	public void setUsedStatus(Integer usedStatus) {
-		this.usedStatus = usedStatus;
 	}
 
 	public Integer getPoint() {
@@ -106,12 +87,12 @@ public class UserAwardMap {
 		this.user = user;
 	}
 
-	public Award getAward() {
-		return award;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setAward(Award award) {
-		this.award = award;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public Shop getShop() {

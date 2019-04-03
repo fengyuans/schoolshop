@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.myo2o.dao.ProductDao">
-	<resultMap id="productMap" type="com.imooc.myo2o.entity.Product">
+<mapper namespace="com.my.schoolshop.dao.ProductDao">
+	<resultMap id="productMap" type="com.my.schoolshop.model.Product">
 		<id column="product_id" property="productId" />
 		<result column="product_name" property="productName" />
 		<result column="product_desc" property="productDesc" />
@@ -16,7 +16,7 @@
 		<result column="enable_status" property="enableStatus" />
 		<result column="point" property="point" />
 		<association property="productCategory" column="product_category_id"
-			javaType="com.imooc.myo2o.entity.ProductCategory">
+			javaType="com.my.schoolshop.model.ProductCategory">
 			<id column="product_category_id" property="productCategoryId" />
 			<result column="product_category_name" property="productCategoryName" />
 			<result column="product_category_desc" property="productCategoryDesc" />
@@ -25,7 +25,7 @@
 			<result column="last_edit_time" property="lastEditTime" />
 		</association>
 		<association property="shop" column="shop_id"
-			javaType="com.imooc.myo2o.entity.Shop">
+			javaType="com.my.schoolshop.model.Shop">
 			<id column="shop_id" property="shopId" />
 			<result column="owner_id" property="ownerId" />
 			<result column="shop_name" property="shopName" />
@@ -42,7 +42,7 @@
 			<result column="advice" property="advice" />
 		</association>
 		<collection property="productImgList" column="product_id"
-			ofType="com.imooc.myo2o.entity.ProductImg">
+			ofType="com.my.schoolshop.model.ProductImg">
 			<id column="product_img_id" property="productImgId" />
 			<result column="img_addr" property="imgAddr" />
 			<result column="img_desc" property="imgDesc" />
@@ -153,7 +153,7 @@
 		ORDER BY
 		pm.priority DESC
 	</select>
-	<insert id="insertProduct" parameterType="com.imooc.myo2o.entity.Product"
+	<insert id="insertProduct" parameterType="com.my.schoolshop.model.Product"
 		useGeneratedKeys="true" keyProperty="productId" keyColumn="product_id">
 		INSERT INTO
 		tb_product(product_name,product_desc,img_addr,
@@ -166,7 +166,7 @@
 		#{lastEditTime},#{enableStatus},#{point},#{productCategory.productCategoryId},
 		#{shop.shopId})
 	</insert>
-	<update id="updateProduct" parameterType="com.imooc.myo2o.entity.Product"
+	<update id="updateProduct" parameterType="com.my.schoolshop.model.Product"
 		keyProperty="product_id" useGeneratedKeys="true">
 		UPDATE tb_product
 		<set>

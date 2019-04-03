@@ -1,26 +1,25 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.util.Date;
 
-public class UserProductMap {
-	private Long userProductId;
+public class UserShopMap {
+	private Long userShopId;
 	private Long userId;
-	private Long productId;
 	private Long shopId;
 	private String userName;
-	private String productName;
+	private String shopName;
 	private Date createTime;
 	private Integer point;
 	private PersonInfo user;
 	private Product product;
 	private Shop shop;
 
-	public Long getUserProductId() {
-		return userProductId;
+	public Long getUserShopId() {
+		return userShopId;
 	}
 
-	public void setUserProductId(Long userProductId) {
-		this.userProductId = userProductId;
+	public void setUserShopId(Long userShopId) {
+		this.userShopId = userShopId;
 	}
 
 	public Long getUserId() {
@@ -29,14 +28,6 @@ public class UserProductMap {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
 	}
 
 	public Long getShopId() {
@@ -55,12 +46,12 @@ public class UserProductMap {
 		this.userName = userName;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getShopName() {
+		return shopName;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
 	}
 
 	public Date getCreateTime() {

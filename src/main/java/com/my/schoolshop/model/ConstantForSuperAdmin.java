@@ -1,4 +1,4 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 public class ConstantForSuperAdmin {
 	public static final String PAGE_SIZE = "rows";

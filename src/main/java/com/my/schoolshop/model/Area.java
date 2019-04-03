@@ -1,4 +1,4 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.util.Date;
 
@@ -16,6 +16,8 @@ public class Area {
 	private Date createTime;
 	//最后更新时间
 	private Date lastEditTime;
+
+
 
 	public Long getAreaId() {
 		return areaId;

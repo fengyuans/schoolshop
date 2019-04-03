@@ -48,7 +48,7 @@
 		</property>
 	</bean>
 	<!-- 4.扫描web相关的bean -->
-	<context:component-scan base-package="com.my.school.web" />
+	<context:component-scan base-package="com.my.schoolshop.web" />
 	<!-- 5.权限拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -57,7 +57,7 @@
 			<mvc:exclude-mapping path="/shop/ownerlogincheck" />
 			<mvc:exclude-mapping path="/shop/logout" />
 			<mvc:exclude-mapping path="/shop/register" />
-			<bean id="ShopInterceptor" class="com.my.school.interceptor.shop.ShopLoginInterceptor" />
+			<bean id="ShopInterceptor" class="com.my.schoolshop.interceptor.shop.ShopLoginInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/shop/**" />
@@ -82,7 +82,7 @@
 			<mvc:exclude-mapping path="/shop/getshopinitinfo" />
 			<mvc:exclude-mapping path="/shop/registershop" />
 			<bean id="ShopPermissionInterceptor"
-				class="com.my.school.interceptor.shop.ShopPermissionInterceptor" />
+				class="com.my.schoolshop.interceptor.shop.ShopPermissionInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/superadmin/**" />
@@ -91,7 +91,7 @@
 			<mvc:exclude-mapping path="/superadmin/main" />
 			<mvc:exclude-mapping path="/superadmin/top" />
 			<bean id="SuperAdminInterceptor"
-				class="com.my.school.interceptor.superadmin.SuperAdminLoginInterceptor" />
+				class="com.my.schoolshop.interceptor.superadmin.SuperAdminLoginInterceptor" />
 		</mvc:interceptor>
 
 	</mvc:interceptors>

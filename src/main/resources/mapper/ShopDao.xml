@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.myo2o.dao.ShopDao">
-	<resultMap id="shopMap" type="com.imooc.myo2o.entity.Shop">
+<mapper namespace="com.my.schoolshop.dao.ShopDao">
+	<resultMap id="shopMap" type="com.my.schoolshop.model.Shop">
 		<id column="shop_id" property="shopId" />
 		<result column="owner_id" property="ownerId" />
 		<result column="shop_category_id" property="shopCategoryId" />
@@ -20,7 +20,7 @@
 		<result column="enable_status" property="enableStatus" />
 		<result column="advice" property="advice" />
 		<association property="area" column="area_id"
-			javaType="com.imooc.myo2o.entity.Area">
+			javaType="com.my.schoolshop.model.Area">
 			<id column="area_id" property="areaId" />
 			<result column="area_name" property="areaName" />
 			<result column="area_desc" property="areaDesc" />
@@ -29,7 +29,7 @@
 			<result column="last_edit_time" property="lastEditTime" />
 		</association>
 		<association property="shopCategory" column="shop_category_id"
-			javaType="com.imooc.myo2o.entity.ShopCategory">
+			javaType="com.my.schoolshop.model.ShopCategory">
 			<id column="shop_category_id" property="shopCategoryId" />
 			<result column="shop_category_name" property="shopCategoryName" />
 			<result column="shop_category_desc" property="shopCategoryDesc" />
@@ -39,7 +39,7 @@
 			<result column="last_edit_time" property="lastEditTime" />
 		</association>
 		<association property="parentCategory" column="parent_category_id"
-			javaType="com.imooc.myo2o.entity.ShopCategory">
+			javaType="com.my.schoolshop.model.ShopCategory">
 			<id column="parent_category_id" property="shopCategoryId" />
 			<result column="shop_category_name" property="shopCategoryName" />
 			<result column="shop_category_desc" property="shopCategoryDesc" />
@@ -49,7 +49,7 @@
 			<result column="last_edit_time" property="lastEditTime" />
 		</association>
 		<collection property="staffList" column="shop_id"
-			ofType="com.imooc.myo2o.entity.ShopAuthMap">
+			ofType="com.my.schoolshop.model.ShopAuthMap">
 			<id column="shop_auth_id" property="shopAuthId" />
 			<result column="employee_id" property="employeeId" />
 			<result column="shop_id" property="shopId" />
@@ -222,7 +222,7 @@
 		#{longitude},#{latitude},#{createTime},#{lastEditTime},
 		#{enableStatus},#{advice})
 	</insert>
-	<update id="updateShop" parameterType="com.imooc.myo2o.entity.Shop">
+	<update id="updateShop" parameterType="com.my.schoolshop.model.Shop">
 		update tb_shop
 		<set>
 			<if test="shopName != null">shop_name=#{shopName},</if>

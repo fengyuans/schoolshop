@@ -1,4 +1,4 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.util.Date;
 

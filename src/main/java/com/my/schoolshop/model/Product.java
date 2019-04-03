@@ -1,9 +1,8 @@
-package com.my.shcoolshop.model;
+package com.my.schoolshop.model;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import com.my.shcoolshop.model.ProductImg;
 
 public class Product implements Serializable{
 
