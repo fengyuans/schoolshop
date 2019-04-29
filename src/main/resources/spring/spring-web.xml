@@ -50,7 +50,7 @@
 	<!-- 4.扫描web相关的bean -->
 	<context:component-scan base-package="com.my.schoolshop.web" />
 	<!-- 5.权限拦截器 -->
-	<mvc:interceptors>
+	<!--<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/shop/**" />
 			<mvc:exclude-mapping path="/shop/ownerlogin" />
@@ -64,19 +64,19 @@
 			<mvc:exclude-mapping path="/shop/ownerlogin" />
 			<mvc:exclude-mapping path="/shop/ownerlogincheck" />
 			<mvc:exclude-mapping path="/shop/register" />
-			<!-- shoplist page -->
+			&lt;!&ndash; shoplist page &ndash;&gt;
 			<mvc:exclude-mapping path="/shop/shoplist" />
 			<mvc:exclude-mapping path="/shop/logout" />
 			<mvc:exclude-mapping path="/shop/list" />
-			<!-- changepsw page -->
+			&lt;!&ndash; changepsw page &ndash;&gt;
 			<mvc:exclude-mapping path="/shop/changepsw" />
 			<mvc:exclude-mapping path="/shop/changelocalpwd" />							
-			<!-- ownerbind page -->
+			&lt;!&ndash; ownerbind page &ndash;&gt;
 			<mvc:exclude-mapping path="/shop/ownerbind" />
 			<mvc:exclude-mapping path="/shop/bindlocalauth" />
-			<!-- shopmanage page -->
+			&lt;!&ndash; shopmanage page &ndash;&gt;
 			<mvc:exclude-mapping path="/shop/shopmanage" />
-			<!-- shopedit page -->
+			&lt;!&ndash; shopedit page &ndash;&gt;
 			<mvc:exclude-mapping path="/shop/shopedit" />
 			<mvc:exclude-mapping path="/shop/getshopbyid" />
 			<mvc:exclude-mapping path="/shop/getshopinitinfo" />
@@ -94,5 +94,5 @@
 				class="com.my.schoolshop.interceptor.superadmin.SuperAdminLoginInterceptor" />
 		</mvc:interceptor>
 
-	</mvc:interceptors>
+	</mvc:interceptors>-->
 </beans>
