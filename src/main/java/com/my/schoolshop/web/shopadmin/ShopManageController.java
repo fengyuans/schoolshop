@@ -6,7 +6,10 @@ import com.my.schoolshop.dto.ShopExecution;
 import com.my.schoolshop.model.PersonInfo;
 import com.my.schoolshop.model.Shop;
 import com.my.schoolshop.service.impl.ShopServiceImpl;
+import com.my.schoolshop.util.FileUtil;
 import com.my.schoolshop.util.HttpServletRequestUtil;
+import com.thoughtworks.xstream.io.path.Path;
+import org.junit.internal.runners.model.EachTestNotifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,6 +63,13 @@ public class ShopManageController {
             PersonInfo owner = new PersonInfo();
             owner.setUserId(1L);
             shop.setOwnerId(owner.getUserId());
+            File shopImgFile = new File(PathUtil.getImgBasePath() + FileUtil.getRandomFileName());
+            try {
+                shopImgFile.createNewFile();
+            }catch (IOException e){
+                e.
+            }
+            inputStreamToFile(shopImg.getInputStream(),shopImgFile);
             ShopExecution se = shopService.addShop(shop,shopImg);
         }else {
             modelMap.put("sucess",false);
