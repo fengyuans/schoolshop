@@ -99,4 +99,8 @@
 			#{shopCategoryId}
 		</foreach>
 	</delete>
+
+
+
+
 </mapper>

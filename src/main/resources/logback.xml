@@ -4,7 +4,7 @@
 	<appender name="INFO-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${catalina.base}/webapps/school/logs/info/info.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${catalina.base}/webapps/schoolshop/logs/info/info.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<fileNamePattern>${catalina.base}/webapps/logs/info/info.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>1024MB</maxFileSize>
@@ -20,7 +20,7 @@
 		<file>
 			${catalina.base}/webapps/school/logs/access/access.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${catalina.base}/webapps/schoolshop/logs/access/access.%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+			<FileNamePattern>${catalina.base}/webapps/logs/access/access.%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>1024MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>

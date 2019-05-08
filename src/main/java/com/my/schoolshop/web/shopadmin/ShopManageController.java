@@ -3,8 +3,15 @@ package com.my.schoolshop.web.shopadmin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.my.schoolshop.dto.ShopExecution;
+import com.my.schoolshop.enums.ShopStateEnum;
+import com.my.schoolshop.model.Area;
 import com.my.schoolshop.model.PersonInfo;
 import com.my.schoolshop.model.Shop;
+import com.my.schoolshop.model.ShopCategory;
+import com.my.schoolshop.service.AreaService;
+import com.my.schoolshop.service.ShopCategoryService;
+import com.my.schoolshop.service.ShopService;
+import com.my.schoolshop.service.impl.ShopCategoryServiceImpl;
 import com.my.schoolshop.service.impl.ShopServiceImpl;
 import com.my.schoolshop.util.FileUtil;
 import com.my.schoolshop.util.HttpServletRequestUtil;
@@ -12,6 +19,7 @@ import com.thoughtworks.xstream.io.path.Path;
 import org.junit.internal.runners.model.EachTestNotifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,15 +29,41 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/shopadmin")
+@RequestMapping("/shop")
 public class ShopManageController {
 
     @Autowired
-    private ShopServiceImpl shopService;
+    private ShopService shopService;
+    @Autowired
+    private ShopCategoryService shopCategoryService;
+    @Autowired
+    private AreaService areaService;
+
+    @GetMapping("/getshopinitinfo")
+    @ResponseBody
+    public Map<String,Object> getShopInitInfo(){
+        Map<String,Object> modelMap = new HashMap<>();
+        List<ShopCategory> shopCategoryList = new ArrayList<>();
+        List<Area> areaList = new ArrayList<>();
+        try {
+            shopCategoryList = shopCategoryService.getShopCategoryList(new ShopCategory());
+            areaList = areaService.getAreaList();
+            modelMap.put("shopCategoryList",shopCategoryList);
+            modelMap.put("areaList",areaList);
+            modelMap.put("sucess",true);
+        }catch (Exception e){
+            modelMap.put("sucess",false);
+            modelMap.put("errMsg",e.getMessage());
+        }
+
+        return modelMap;
+    }
 
 
     @PostMapping("/registershop")
@@ -63,24 +97,35 @@ public class ShopManageController {
             PersonInfo owner = new PersonInfo();
             owner.setUserId(1L);
             shop.setOwnerId(owner.getUserId());
-            File shopImgFile = new File(PathUtil.getImgBasePath() + FileUtil.getRandomFileName());
+            File shopImgFile = new File(FileUtil.getImgBasePath() + FileUtil.getRandomFileName());
             try {
                 shopImgFile.createNewFile();
             }catch (IOException e){
-                e.
+                modelMap.put("success",false);
+                modelMap.put("errMsg",e.getMessage());
+                return modelMap;
             }
-            inputStreamToFile(shopImg.getInputStream(),shopImgFile);
+            try {
+                inputStreamToFile(shopImg.getInputStream(),shopImgFile);
+            } catch (IOException e) {
+                modelMap.put("success",false);
+                modelMap.put("errMsg",e.getMessage());
+                return modelMap;
+            }
+            //注册店铺
             ShopExecution se = shopService.addShop(shop,shopImg);
+            if(se.getState() == ShopStateEnum.CHECK.getState()){
+                modelMap.put("sucess",true);
+            }else {
+                modelMap.put("sucess",false);
+                modelMap.put("errMsg",se.getStateInfo());
+            }
+            return modelMap;
         }else {
             modelMap.put("sucess",false);
             modelMap.put("errMsg","请输入店铺信息");
             return modelMap;
         }
-
-
-
-
-        return null;
     }
 
 
