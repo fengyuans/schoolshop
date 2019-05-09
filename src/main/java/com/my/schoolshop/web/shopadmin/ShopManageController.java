@@ -56,7 +56,7 @@ public class ShopManageController {
             areaList = areaService.getAreaList();
             modelMap.put("shopCategoryList",shopCategoryList);
             modelMap.put("areaList",areaList);
-            modelMap.put("sucess",true);
+            modelMap.put("success",true);
         }catch (Exception e){
             modelMap.put("success",false);
             modelMap.put("errMsg",e.getMessage());
