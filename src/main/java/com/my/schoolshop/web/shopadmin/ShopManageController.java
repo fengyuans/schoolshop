@@ -58,7 +58,7 @@ public class ShopManageController {
             modelMap.put("areaList",areaList);
             modelMap.put("sucess",true);
         }catch (Exception e){
-            modelMap.put("sucess",false);
+            modelMap.put("success",false);
             modelMap.put("errMsg",e.getMessage());
         }
 
@@ -88,7 +88,7 @@ public class ShopManageController {
             MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
             shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
         }else {
-            modelMap.put("sucess",false);
+            modelMap.put("success",false);
             modelMap.put("errMsg","上传图片不能为空");
             return modelMap;
         }
@@ -115,14 +115,14 @@ public class ShopManageController {
             //注册店铺
             ShopExecution se = shopService.addShop(shop,shopImg);
             if(se.getState() == ShopStateEnum.CHECK.getState()){
-                modelMap.put("sucess",true);
+                modelMap.put("success",true);
             }else {
-                modelMap.put("sucess",false);
+                modelMap.put("success",false);
                 modelMap.put("errMsg",se.getStateInfo());
             }
             return modelMap;
         }else {
-            modelMap.put("sucess",false);
+            modelMap.put("success",false);
             modelMap.put("errMsg","请输入店铺信息");
             return modelMap;
         }

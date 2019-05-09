@@ -33,7 +33,7 @@ public class AreaController {
 
         }catch (Exception e){
             e.printStackTrace();
-            map.put("sucess",false);
+            map.put("success",false);
             map.put("errMsg",e.toString());
         }
         return map;
