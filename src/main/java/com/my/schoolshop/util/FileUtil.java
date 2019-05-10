@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class FileUtil {
-    private static String seperator = System.getProperty("file.seperator");//获取系统分割符号
+    private static String seperator = File.separator;//获取系统分割符号
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
     private static final Random r = new Random();
 
@@ -47,6 +47,7 @@ public class FileUtil {
         shopImagePathBuilder.append("upload/images/item/shop/");
         shopImagePathBuilder.append(shopId);
         shopImagePathBuilder.append("/");
+        System.out.println(seperator);
         String shopImagePath = shopImagePathBuilder.toString().replace("/",seperator);
         return shopImagePath;
     }

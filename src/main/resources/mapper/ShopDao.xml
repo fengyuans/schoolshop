@@ -208,8 +208,7 @@
 		WHERE
 		shop_id = #{shopId}
 	</select>
-	<insert id="insertShop" useGeneratedKeys="true" keyProperty="shopId"
-		keyColumn="shop_id">
+	<insert id="insertShop" useGeneratedKeys="true" keyProperty="shopId" keyColumn="shop_id">
 		<!-- 具体的sql -->
 		INSERT INTO
 		tb_shop(owner_id,area_id,shop_category_id,parent_category_id,

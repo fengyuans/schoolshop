@@ -13,6 +13,7 @@ import com.my.schoolshop.service.ShopCategoryService;
 import com.my.schoolshop.service.ShopService;
 import com.my.schoolshop.service.impl.ShopCategoryServiceImpl;
 import com.my.schoolshop.service.impl.ShopServiceImpl;
+import com.my.schoolshop.util.CodeUtil;
 import com.my.schoolshop.util.FileUtil;
 import com.my.schoolshop.util.HttpServletRequestUtil;
 import com.thoughtworks.xstream.io.path.Path;
@@ -70,6 +71,12 @@ public class ShopManageController {
     @ResponseBody
     public Map<String, Object> registerShop(HttpServletRequest request){
         Map<String, Object> modelMap = new HashMap<>();
+        if(!CodeUtil.checkVerifyCode(request)){
+            modelMap.put("success",false);
+            modelMap.put("errMsg","请输入正确的验证码");
+            return modelMap;
+        }
+
         String shopStr = HttpServletRequestUtil.getString(request,"shopStr");
         ObjectMapper mapper = new ObjectMapper();
         Shop shop = null;
@@ -95,7 +102,7 @@ public class ShopManageController {
         //注册店铺
         if(shop != null && shopImg != null){
             PersonInfo owner = new PersonInfo();
-            owner.setUserId(1L);
+            owner.setUserId(8L);
             shop.setOwnerId(owner.getUserId());
 
             //注册店铺

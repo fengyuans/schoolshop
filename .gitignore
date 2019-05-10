@@ -9,3 +9,5 @@ out
 gen
 /target/
 /catalina.base_IS_UNDEFINED/
+/src/main/java/com/my/schoolshop/util/DESUtils.java
+/src/main/resources/jdbc.properties
