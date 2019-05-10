@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.InputStream;
 import java.util.Date;
 
 @Service
@@ -33,7 +34,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public ShopExecution addShop(Shop shop, CommonsMultipartFile shopImg) throws ShopOperationException {
+    public ShopExecution addShop(Shop shop, InputStream shopImg,String fileName) throws ShopOperationException {
         if(shop == null){
             return new ShopExecution(ShopStateEnum.NULL_SHOP_INFO);
         }
@@ -56,7 +57,7 @@ public class ShopServiceImpl implements ShopService {
             }else {
                 if(shopImg != null){
                     try {//存储图片
-                        addShopImg(shop,shopImg);
+                        addShopImg(shop,shopImg,fileName);
                     }catch (Exception e){
                         throw  new ShopOperationException("addShopImg err"+e.getMessage());
                     }
@@ -76,10 +77,10 @@ public class ShopServiceImpl implements ShopService {
         return new ShopExecution(ShopStateEnum.CHECK,shop);
     }
 
-    private void addShopImg(Shop shop, CommonsMultipartFile shopImg) {
+    private void addShopImg(Shop shop, InputStream shopImg,String fileName) {
         //获取shop图片的相对子路径
         String dest = FileUtil.getShopImagePath(shop.getShopId());
-        String shopImgAddr = ImageUtil.generateThumbnail(shopImg,dest);
+        String shopImgAddr = ImageUtil.generateThumbnail(shopImg,fileName,dest);
         shop.setShopImg(shopImgAddr);
     }
 }

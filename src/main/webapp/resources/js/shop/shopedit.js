@@ -5,7 +5,7 @@ $(function() {
 	var isEdit = shopId ? true : false;
 
 	var shopInfoUrl = '/shop/getshopbyid?shopId=1';
-	// var shopInfoUrl = '/shop/getshopbyid?shopId=' + shopId;
+
 	var initUrl = '/shop/getshopinitinfo';
 	var editShopUrl = '/shop/registershop';
 	if (isEdit) {

@@ -97,64 +97,27 @@ public class ShopManageController {
             PersonInfo owner = new PersonInfo();
             owner.setUserId(1L);
             shop.setOwnerId(owner.getUserId());
-            File shopImgFile = new File(FileUtil.getImgBasePath() + FileUtil.getRandomFileName());
+
+            //注册店铺
+            ShopExecution se = null;
             try {
-                shopImgFile.createNewFile();
-            }catch (IOException e){
-                modelMap.put("success",false);
-                modelMap.put("errMsg",e.getMessage());
-                return modelMap;
-            }
-            try {
-                inputStreamToFile(shopImg.getInputStream(),shopImgFile);
+                se = shopService.addShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+                if(se.getState() == ShopStateEnum.CHECK.getState()){
+                    modelMap.put("success",true);
+                }else {
+                    modelMap.put("success",false);
+                    modelMap.put("errMsg",se.getStateInfo());
+                }
             } catch (IOException e) {
                 modelMap.put("success",false);
                 modelMap.put("errMsg",e.getMessage());
-                return modelMap;
             }
-            //注册店铺
-            ShopExecution se = shopService.addShop(shop,shopImg);
-            if(se.getState() == ShopStateEnum.CHECK.getState()){
-                modelMap.put("success",true);
-            }else {
-                modelMap.put("success",false);
-                modelMap.put("errMsg",se.getStateInfo());
-            }
+
             return modelMap;
         }else {
             modelMap.put("success",false);
             modelMap.put("errMsg","请输入店铺信息");
             return modelMap;
         }
-    }
-
-
-    private static void inputStreamToFile(InputStream ins,File file){
-        FileOutputStream outputStream = null;
-        try {
-            outputStream = new FileOutputStream(file);
-            int bytesRead = 0;
-            byte[] buffer = new byte[1024];
-            while ((bytesRead = ins.read(buffer))!= -1){
-                outputStream.write(buffer,0,bytesRead);
-            }
-
-        }catch (Exception e){
-            throw new RuntimeException("调用inputStreamToFile异常"+e.getMessage());
-        }finally {
-            try {
-                if(outputStream != null){
-                    outputStream.close();
-                }
-
-                if(ins != null){
-                    ins.close();
-                }
-            }catch (IOException e){
-                throw new RuntimeException("调用inputStreamToFile异常"+e.getMessage());
-            }
-
-        }
-
     }
 }
