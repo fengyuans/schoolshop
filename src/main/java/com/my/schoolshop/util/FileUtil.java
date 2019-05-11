@@ -59,6 +59,8 @@ public class FileUtil {
         return nowTimeStr + rannum;
     }
 
+    //判断storePath 是文件路径，直接删除文件
+    //storePath是目录路径，则删除目录的所有文件
     public static void deleteFile(String storePath) {
         File file = new File(getImgBasePath() + storePath);
         if (file.exists()) {

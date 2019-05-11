@@ -9,4 +9,7 @@ public interface ShopDao {
     //更新店铺信息
     int updateShop(Shop shop);
 
+    //通过shopId查询店铺信息
+    Shop queryByShopId(long shopId);
+
 }
