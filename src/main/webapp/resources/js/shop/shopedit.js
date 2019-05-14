@@ -4,7 +4,7 @@ $(function() {
 
 	var isEdit = shopId ? true : false;
 
-	var shopInfoUrl = '/shop/getshopbyid?shopId=1';
+	var shopInfoUrl = '/shop/getshopbyid?shopId='+shopId;
 
 	var initUrl = '/shop/getshopinitinfo';
 	var editShopUrl = '/shop/registershop';
@@ -31,7 +31,7 @@ $(function() {
 				$('#shop-category').html(shopCategory);
 				$('#shop-category').attr('disabled','disabled');
 				$('#area').html(tempAreaHtml);
-				$('#area').attr('data-id',shop.areaId);
+                $("#area option[data-id='"+shop.area.areaId+"']").attr("selected","selected");
 			}
 		});
 	}
@@ -65,6 +65,9 @@ $(function() {
 	$('#submit').click(function() {
 		var shop = {};
 
+		if(isEdit){
+			shop.shopId = shopId;
+		}
 		shop.shopName = $('#shop-name').val();
 		shop.shopAddr = $('#shop-addr').val();
 		shop.phone = $('#shop-phone').val();

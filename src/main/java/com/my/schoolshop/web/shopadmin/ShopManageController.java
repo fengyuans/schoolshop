@@ -123,9 +123,8 @@ public class ShopManageController {
         }
         //注册店铺
         if(shop != null && shopImg != null){
-            PersonInfo owner = new PersonInfo();
-            owner.setUserId(8L);
-            shop.setOwnerId(owner.getUserId());
+            PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+            shop.setPersonInfo(owner);
 
             //注册店铺
             ShopExecution se = null;
@@ -133,6 +132,13 @@ public class ShopManageController {
                 se = shopService.addShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
                 if(se.getState() == ShopStateEnum.CHECK.getState()){
                     modelMap.put("success",true);
+                    //用户可以操作的店铺列表
+                    List<Shop> shopList = (List<Shop>)request.getSession().getAttribute("shopList");
+                    if(shopList == null || shopList.size() == 0){
+                        shopList = new ArrayList<>();
+                    }
+                    shopList.add(se.getShop());
+                    request.getSession().setAttribute("shopList",shopList);
                 }else {
                     modelMap.put("success",false);
                     modelMap.put("errMsg",se.getStateInfo());

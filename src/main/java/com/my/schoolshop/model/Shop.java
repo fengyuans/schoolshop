@@ -1,5 +1,6 @@
 package com.my.schoolshop.model;
 
+import java.security.acl.Owner;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,15 @@ public class Shop {
 	private Area area;
 	private ShopCategory shopCategory;
 	private ShopCategory parentCategory;
+	private PersonInfo personInfo;
+
+	public PersonInfo getPersonInfo() {
+		return personInfo;
+	}
+
+	public void setPersonInfo(PersonInfo personInfo) {
+		this.personInfo = personInfo;
+	}
 
 	public Long getShopId() {
 		return shopId;
