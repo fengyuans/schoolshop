@@ -46,6 +46,28 @@ public class ShopManageController {
     @Autowired
     private AreaService areaService;
 
+    @GetMapping("/getshopbyid")
+    @ResponseBody
+    public Map<String,Object> getShopById(HttpServletRequest request){
+        Map<String,Object> modelMap = new HashMap<>();
+        Long shopId = HttpServletRequestUtil.getLong(request,"shopId");
+        if(shopId > -1){
+            Shop shop = shopService.getByShopId(shopId);
+            List<Area> areaList = areaService.getAreaList();
+            modelMap.put("shop",shop);
+            modelMap.put("areaList",areaList);
+            modelMap.put("success",true);
+        }else {
+            modelMap.put("success",true);
+            modelMap.put("errMsg","empty shopId");
+        }
+
+        return modelMap;
+    }
+
+
+
+
     @GetMapping("/getshopinitinfo")
     @ResponseBody
     public Map<String,Object> getShopInitInfo(){
@@ -127,4 +149,75 @@ public class ShopManageController {
             return modelMap;
         }
     }
+
+
+
+    @PostMapping("/modifyshop")
+    @ResponseBody
+    public Map<String, Object> modifyShop(HttpServletRequest request){
+        Map<String, Object> modelMap = new HashMap<>();
+        if(!CodeUtil.checkVerifyCode(request)){
+            modelMap.put("success",false);
+            modelMap.put("errMsg","请输入正确的验证码");
+            return modelMap;
+        }
+
+        String shopStr = HttpServletRequestUtil.getString(request,"shopStr");
+        ObjectMapper mapper = new ObjectMapper();
+        Shop shop = null;
+        try {
+            shop = mapper.readValue(shopStr,Shop.class);
+        }catch (Exception e){
+            modelMap.put("success",false);
+            modelMap.put("errMsg",e.getMessage());
+            return modelMap;
+
+        }
+
+        CommonsMultipartFile shopImg = null;
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());//获取文件上传内容
+        if(multipartResolver.isMultipart(request)){//是否有上传的文件流
+            MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+            shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
+        }
+        //修改店铺
+        if(shop != null && shop.getShopImg() != null){
+            PersonInfo owner = new PersonInfo();
+            owner.setUserId(8L);
+            shop.setOwnerId(owner.getUserId());
+
+            //修改店铺
+            ShopExecution se = null;
+            try {
+                if(shopImg == null){
+                    se = shopService.modifyShop(shop,null,null);
+                }
+                se = shopService.modifyShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+                if(se.getState() == ShopStateEnum.SUCCESS.getState()){
+                    modelMap.put("success",true);
+                }else {
+                    modelMap.put("success",false);
+                    modelMap.put("errMsg",se.getStateInfo());
+                }
+            } catch (IOException e) {
+                modelMap.put("success",false);
+                modelMap.put("errMsg",e.getMessage());
+            }
+
+            return modelMap;
+        }else {
+            modelMap.put("success",false);
+            modelMap.put("errMsg","请输入店铺ID");
+            return modelMap;
+        }
+    }
+
+
+
+
+
+
+
+
+
 }

@@ -86,15 +86,29 @@ public class ShopServiceImpl implements ShopService {
     public ShopExecution modifyShop(Shop shop, InputStream shopImg, String fileName) throws ShopOperationException {
         //1.判断是否需要处理图片
         //2.更新店铺信息
+        try {
         if(shop == null || shop.getShopId() == null){
             return new ShopExecution(ShopStateEnum.NULL_SHOP_INFO);
         }else {
+             if(shopImg != null && fileName != null && !("").equals(fileName)){
+                 Shop tempShop = shopDao.queryByShopId(shop.getShopId());
+                 if(tempShop.getShopImg() != null){
+                     FileUtil.deleteFile(tempShop.getShopImg());
+                 }
+                addShopImg(shop,shopImg,fileName);
+             }
 
+             shop.setLastEditTime(new Date());
+             int k = shopDao.updateShop(shop);
+             if(k <= 0){
+                 return new ShopExecution(ShopStateEnum.INNER_ERROR);
+             }else {
+                 shop = shopDao.queryByShopId(shop.getShopId());
+                 return new ShopExecution(ShopStateEnum.SUCCESS,shop);
+             }
+        } }catch (Exception e){
+            throw new ShopOperationException("modifyShop err:"+e.getMessage());
         }
-
-
-
-        return null;
     }
 
     private void addShopImg(Shop shop, InputStream shopImg,String fileName) {
