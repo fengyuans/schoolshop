@@ -3,7 +3,7 @@
  */
 function getlist(e) {
 	$.ajax({
-		url : "/shop/list",
+		url : "/shop/shoplist",
 		type : "get",
 		dataType : "json",
 		success : function(wholePageData) {

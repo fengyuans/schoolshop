@@ -46,6 +46,61 @@ public class ShopManageController {
     @Autowired
     private AreaService areaService;
 
+
+    @GetMapping("/getshopmanagementinfo")
+    @ResponseBody
+    public Map<String,Object> getShopManagementInfo(HttpServletRequest request){
+        Map<String,Object> modelMap = new HashMap<>();
+        long shopId = HttpServletRequestUtil.getLong(request,"shopIdd");
+        if(shopId <= 0){
+            Object currentShopObj = request.getSession().getAttribute("currentShop");
+            if(currentShopObj == null){
+                modelMap.put("redirect",true);
+                modelMap.put("url","/shopadmin/shoplist");
+            }else {
+                Shop currentShop = (Shop) currentShopObj;
+                modelMap.put("redirect",false);
+                modelMap.put("shopId",currentShop.getShopId());
+            }
+        }else {
+            Shop currentShop = new Shop();
+            currentShop.setShopId(shopId);
+            request.getSession().setAttribute("currentShop",currentShop);
+            modelMap.put("redirect",false);
+        }
+        return modelMap;
+    }
+
+
+
+
+    @GetMapping("/getshoplist")
+    @ResponseBody
+    public Map<String,Object> getShopList(HttpServletRequest request){
+        Map<String,Object> modelMap = new HashMap<>();
+        PersonInfo user = new PersonInfo();
+        user.setUserId(1L);
+        request.getSession().setAttribute("user",user);
+        user = (PersonInfo) request.getSession().getAttribute("user");
+        List<Shop> shopList = new ArrayList<>();
+        try {
+            Shop shopCondition = new Shop();
+            shopCondition.setOwner(user);
+            ShopExecution se = shopService.getShopList(shopCondition,0,100);
+            modelMap.put("shopList",se.getShopList());
+            modelMap.put("user",user);
+            modelMap.put("success",true);
+        }catch (Exception e){
+            modelMap.put("success",false);
+            modelMap.put("errMsg",e.getMessage());
+        }
+
+        return modelMap;
+    }
+
+
+
+
     @GetMapping("/getshopbyid")
     @ResponseBody
     public Map<String,Object> getShopById(HttpServletRequest request){
@@ -124,7 +179,7 @@ public class ShopManageController {
         //注册店铺
         if(shop != null && shopImg != null){
             PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
-            shop.setPersonInfo(owner);
+            shop.setOwner(owner);
 
             //注册店铺
             ShopExecution se = null;

@@ -37,14 +37,14 @@ public class Shop {
 	private Area area;
 	private ShopCategory shopCategory;
 	private ShopCategory parentCategory;
-	private PersonInfo personInfo;
+	private PersonInfo owner;
 
-	public PersonInfo getPersonInfo() {
-		return personInfo;
+	public PersonInfo getOwner() {
+		return owner;
 	}
 
-	public void setPersonInfo(PersonInfo personInfo) {
-		this.personInfo = personInfo;
+	public void setOwner(PersonInfo owner) {
+		this.owner = owner;
 	}
 
 	public Long getShopId() {
