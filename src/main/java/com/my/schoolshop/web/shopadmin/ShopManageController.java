@@ -51,12 +51,12 @@ public class ShopManageController {
     @ResponseBody
     public Map<String,Object> getShopManagementInfo(HttpServletRequest request){
         Map<String,Object> modelMap = new HashMap<>();
-        long shopId = HttpServletRequestUtil.getLong(request,"shopIdd");
+        long shopId = HttpServletRequestUtil.getLong(request,"shopId");
         if(shopId <= 0){
             Object currentShopObj = request.getSession().getAttribute("currentShop");
             if(currentShopObj == null){
                 modelMap.put("redirect",true);
-                modelMap.put("url","/shopadmin/shoplist");
+                modelMap.put("url","/shopadmin/getshoplist");
             }else {
                 Shop currentShop = (Shop) currentShopObj;
                 modelMap.put("redirect",false);

@@ -12,7 +12,5 @@ public interface ShopCategoryDao {
 
     ShopCategory queryShopCategoryById(long shopCategoryId);
 
-
-
     List<ShopCategory> queryShopCategory(@Param("shopCategoryCondition") ShopCategory shopCategoryCondition);
 }

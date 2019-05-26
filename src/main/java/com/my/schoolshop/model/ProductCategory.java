@@ -71,10 +71,4 @@ public class ProductCategory {
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
 	}
-
-	public String toString() {
-		return "[productCategoryId=" + productCategoryId
-				+ ", productCategoryIdName=" + productCategoryName + "]";
-	}
-
 }

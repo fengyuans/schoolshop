@@ -1,5 +1,6 @@
 $(function () {
 
+	getlist();
 	function getlist(e) {
 		$.ajax({
 			url : "/shop/getshoplist",
@@ -63,7 +64,4 @@ $(function () {
 			}
 		});
 	});
-
-
-	getlist();
 });

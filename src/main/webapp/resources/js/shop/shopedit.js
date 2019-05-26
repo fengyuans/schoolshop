@@ -2,15 +2,23 @@ $(function() {
 
 	var shopId = getQueryString('shopId');
 
+
 	var isEdit = shopId ? true : false;
 
 	var shopInfoUrl = '/shop/getshopbyid?shopId='+shopId;
-
 	var initUrl = '/shop/getshopinitinfo';
-	var editShopUrl = '/shop/registershop';
+	var registerUrl = '/shopadmin/registershop';
+	var editShopUrl = '/shop/modifyshop';
+
 	if (isEdit) {
 		editShopUrl = '/shop/modifyshop';
 	}
+
+    if (isEdit) {
+        getInfo(shopId);
+    } else {
+        getCategory();
+    }
 
 	function getInfo(shopId) {
 		$.getJSON(shopInfoUrl, function(data) {
@@ -56,11 +64,7 @@ $(function() {
 		});
 	}
 
-	if (isEdit) {
-		getInfo(shopId);
-	} else {
-		getCategory();
-	}
+
 
 	$('#submit').click(function() {
 		var shop = {};
