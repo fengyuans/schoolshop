@@ -2,6 +2,7 @@ package com.my.schoolshop.web.shopadmin;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.my.schoolshop.dao.ImageHolder;
 import com.my.schoolshop.dto.ShopExecution;
 import com.my.schoolshop.enums.ShopStateEnum;
 import com.my.schoolshop.model.Area;
@@ -184,7 +185,8 @@ public class ShopManageController {
             //注册店铺
             ShopExecution se = null;
             try {
-                se = shopService.addShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+                ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(),shopImg.getInputStream());
+                se = shopService.addShop(shop,imageHolder);
                 if(se.getState() == ShopStateEnum.CHECK.getState()){
                     modelMap.put("success",true);
                     //用户可以操作的店铺列表
@@ -251,9 +253,10 @@ public class ShopManageController {
             ShopExecution se = null;
             try {
                 if(shopImg == null){
-                    se = shopService.modifyShop(shop,null,null);
+                    se = shopService.modifyShop(shop,null);
                 }
-                se = shopService.modifyShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+                ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(),shopImg.getInputStream());
+                se = shopService.modifyShop(shop,imageHolder);
                 if(se.getState() == ShopStateEnum.SUCCESS.getState()){
                     modelMap.put("success",true);
                 }else {

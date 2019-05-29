@@ -1,17 +1,17 @@
 $(function() {
 	var productId = getQueryString('productId');
-	var shopId = 1;
-	var infoUrl = '/shop/getproductbyid?productId=' + productId;
-	var categoryUrl = '/shop/getproductcategorylistbyshopId?shopId='
+	var shopId = 15;
+	var infoUrl = '/shopadmin/getproductbyid?productId=' + productId;
+	var categoryUrl = '/shopadmin/getproductcategorylist?shopId='
 			+ shopId;
-	var productPostUrl = '/shop/modifyproduct';
+	var productPostUrl = '/shopadmin/modifyproduct';
 	var isEdit = false;
 	if (productId) {
 		getInfo(productId);
 		isEdit = true;
 	} else {
 		getCategory(shopId);
-		productPostUrl = '/shop/addproduct';
+		productPostUrl = '/shopadmin/addproduct';
 	}
 
 	function getInfo(id) {
@@ -51,7 +51,7 @@ $(function() {
 	function getCategory() {
 		$.getJSON(categoryUrl, function(data) {
 			if (data.success) {
-				var productCategoryList = data.productCategoryList;
+				var productCategoryList = data.data;
 				var optionHtml = '';
 				productCategoryList.map(function(item, index) {
 					optionHtml += '<option data-value="'

@@ -1,5 +1,6 @@
 package com.my.schoolshop.util;
 
+import com.my.schoolshop.dao.ImageHolder;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -11,14 +12,14 @@ import java.util.List;
 
 public class ImageUtil {
 
-    public static String generateThumbnail(InputStream thumbnail,String fileName,String targetAddr) {//CommonsMultipartFile 缩略图文件
+    public static String generateThumbnail(ImageHolder thumbnail,String targetAddr) {//CommonsMultipartFile 缩略图文件
         String realFileName = FileUtil.getRandomFileName();//获取随机文件名称
-        String extension = getFileExtension(fileName);//获取文件名后缀
+        String extension = getFileExtension(thumbnail.getImageName());//获取文件名后缀
         makeDirPath(targetAddr);//创建目录
         String relativeAddr = targetAddr + realFileName + extension;
         File dest = new File(FileUtil.getImgBasePath() + relativeAddr);
         try {
-            Thumbnails.of(thumbnail).size(200, 200).outputQuality(0.25f).toFile(dest);
+            Thumbnails.of(thumbnail.getImage()).size(200, 200).outputQuality(0.25f).toFile(dest);
         } catch (IOException e) {
             throw new RuntimeException("创建缩略图失败：" + e.toString());
         }

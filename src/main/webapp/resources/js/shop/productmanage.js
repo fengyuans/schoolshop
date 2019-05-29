@@ -1,8 +1,7 @@
 $(function() {
 	var shopId = 1;
-	var listUrl = '/shop/listproductsbyshop?pageIndex=1&pageSize=9999&shopId='
-			+ shopId;
-	var deleteUrl = '/shop/modifyproduct';
+	var listUrl = '/shopadmin/getproductlistbyshop?pageIndex=1&pageSize=9999&shopId='+ shopId;
+	var deleteUrl = '/shopadmin/modifyproduct';
 
 	function getList() {
 		$.getJSON(listUrl, function(data) {
@@ -19,13 +18,13 @@ $(function() {
 						contraryStatus = 0;
 					}
 					tempHtml += '' + '<div class="row row-product">'
-							+ '<div class="col-30">'
+							+ '<div class="col-33">'
 							+ item.productName
 							+ '</div>'
 							+ '<div class="col-20">'
 							+ item.priority
 							+ '</div>'
-							+ '<div class="col-50">'
+							+ '<div class="col-40">'
 							+ '<a href="#" class="edit" data-id="'
 							+ item.productId
 							+ '" data-status="'
@@ -85,7 +84,7 @@ $(function() {
 					function(e) {
 						var target = $(e.currentTarget);
 						if (target.hasClass('edit')) {
-							window.location.href = '/shop/productedit?productId='
+							window.location.href = '/shopadmin/productedit?productId='
 									+ e.currentTarget.dataset.id;
 						} else if (target.hasClass('delete')) {
 							deleteItem(e.currentTarget.dataset.id,
@@ -97,6 +96,6 @@ $(function() {
 					});
 
 	$('#new').click(function() {
-		window.location.href = '/shop/productedit';
+		window.location.href = '/shopadmin/productedit';
 	});
 });
