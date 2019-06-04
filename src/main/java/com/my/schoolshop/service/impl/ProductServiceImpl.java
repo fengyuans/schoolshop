@@ -1,6 +1,6 @@
 package com.my.schoolshop.service.impl;
 
-import com.my.schoolshop.dao.ImageHolder;
+import com.my.schoolshop.dto.ImageHolder;
 import com.my.schoolshop.dao.ProductDao;
 import com.my.schoolshop.dao.ProductImgDao;
 import com.my.schoolshop.dto.ProductExecution;

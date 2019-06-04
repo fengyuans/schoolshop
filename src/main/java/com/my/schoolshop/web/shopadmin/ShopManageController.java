@@ -2,7 +2,7 @@ package com.my.schoolshop.web.shopadmin;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.schoolshop.dao.ImageHolder;
+import com.my.schoolshop.dto.ImageHolder;
 import com.my.schoolshop.dto.ShopExecution;
 import com.my.schoolshop.enums.ShopStateEnum;
 import com.my.schoolshop.model.Area;
@@ -12,13 +12,8 @@ import com.my.schoolshop.model.ShopCategory;
 import com.my.schoolshop.service.AreaService;
 import com.my.schoolshop.service.ShopCategoryService;
 import com.my.schoolshop.service.ShopService;
-import com.my.schoolshop.service.impl.ShopCategoryServiceImpl;
-import com.my.schoolshop.service.impl.ShopServiceImpl;
 import com.my.schoolshop.util.CodeUtil;
-import com.my.schoolshop.util.FileUtil;
 import com.my.schoolshop.util.HttpServletRequestUtil;
-import com.thoughtworks.xstream.io.path.Path;
-import org.junit.internal.runners.model.EachTestNotifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

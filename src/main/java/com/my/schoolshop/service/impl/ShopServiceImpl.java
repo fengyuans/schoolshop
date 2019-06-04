@@ -1,6 +1,6 @@
 package com.my.schoolshop.service.impl;
 
-import com.my.schoolshop.dao.ImageHolder;
+import com.my.schoolshop.dto.ImageHolder;
 import com.my.schoolshop.dao.ShopAuthMapDao;
 import com.my.schoolshop.dao.ShopCategoryDao;
 import com.my.schoolshop.dao.ShopDao;
@@ -8,19 +8,14 @@ import com.my.schoolshop.dto.ShopExecution;
 import com.my.schoolshop.enums.ShopStateEnum;
 import com.my.schoolshop.exceptions.ShopOperationException;
 import com.my.schoolshop.model.Shop;
-import com.my.schoolshop.model.ShopAuthMap;
-import com.my.schoolshop.model.ShopCategory;
 import com.my.schoolshop.service.ShopService;
 import com.my.schoolshop.util.FileUtil;
 import com.my.schoolshop.util.ImageUtil;
 import com.my.schoolshop.util.PageCalculator;
-import com.sun.javafx.scene.shape.PathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 

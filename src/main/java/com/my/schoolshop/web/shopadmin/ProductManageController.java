@@ -1,7 +1,7 @@
 package com.my.schoolshop.web.shopadmin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.my.schoolshop.dao.ImageHolder;
+import com.my.schoolshop.dto.ImageHolder;
 import com.my.schoolshop.dto.ProductExecution;
 import com.my.schoolshop.enums.ProductStateEnum;
 import com.my.schoolshop.exceptions.ProductOperationException;
@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.print.MultiDoc;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;

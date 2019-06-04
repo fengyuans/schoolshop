@@ -44,7 +44,7 @@ public class FileUtil {
     }
     public static String getShopImagePath(long shopId) {
         StringBuilder shopImagePathBuilder = new StringBuilder();
-        shopImagePathBuilder.append("upload/images/item/shop/");
+        shopImagePathBuilder.append("/upload/images/item/shop/");
         shopImagePathBuilder.append(shopId);
         shopImagePathBuilder.append("/");
         System.out.println(seperator);

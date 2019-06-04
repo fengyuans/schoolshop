@@ -1,6 +1,6 @@
 package com.my.schoolshop.util;
 
-import com.my.schoolshop.dao.ImageHolder;
+import com.my.schoolshop.dto.ImageHolder;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 

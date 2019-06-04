@@ -1,4 +1,4 @@
-package com.my.schoolshop.dao;
+package com.my.schoolshop.dto;
 
 import java.io.InputStream;
 
