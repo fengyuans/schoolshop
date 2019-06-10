@@ -14,9 +14,10 @@ public class AreaDaoTest extends BaseTest {
     private AreaService service;
 
 
-    @Test
+  /*  @Test
     public void queryAllTest(){
+
         List<Area> list = service.getAreaList();
         System.out.println(list);
-    }
+    }*/
 }
