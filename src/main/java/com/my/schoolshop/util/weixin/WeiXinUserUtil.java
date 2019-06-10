@@ -4,14 +4,15 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
+import com.my.schoolshop.model.PersonInfo;
+import com.my.schoolshop.util.DESUtils;
+import com.my.schoolshop.util.weixin.message.pojo.UserAccessToken;
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.imooc.myo2o.entity.PersonInfo;
-import com.imooc.myo2o.util.DESUtils;
-import com.imooc.myo2o.util.weixin.message.pojo.UserAccessToken;
+
 
 public class WeiXinUserUtil {
 

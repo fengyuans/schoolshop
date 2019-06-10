@@ -13,14 +13,15 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
+import com.my.schoolshop.util.weixin.message.pojo.AccessToken;
+import com.my.schoolshop.util.weixin.message.pojo.Menu;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.imooc.myo2o.util.weixin.message.pojo.AccessToken;
-import com.imooc.myo2o.util.weixin.message.pojo.Menu;
+
 
 /**
  * 公众平台通用接口工具类

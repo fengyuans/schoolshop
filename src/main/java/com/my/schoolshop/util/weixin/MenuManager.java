@@ -3,15 +3,12 @@ package com.my.schoolshop.util.weixin;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import com.my.schoolshop.util.weixin.message.pojo.*;
+import com.my.schoolshop.util.weixin.message.pojo.AccessToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.imooc.myo2o.util.weixin.message.pojo.AccessToken;
-import com.imooc.myo2o.util.weixin.message.pojo.Button;
-import com.imooc.myo2o.util.weixin.message.pojo.CommonButton;
-import com.imooc.myo2o.util.weixin.message.pojo.ComplexButton;
-import com.imooc.myo2o.util.weixin.message.pojo.Menu;
-import com.imooc.myo2o.util.weixin.message.pojo.ViewButton;
+
 
 /**
  * 菜单管理器类

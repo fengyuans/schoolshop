@@ -1,8 +1,9 @@
 package com.my.schoolshop.util.weixin.message.resp;
 
-import com.imooc.myo2o.util.baidu.Point;
 
-/** 
+import com.my.schoolshop.util.baidu.Point;
+
+/**
  * 文本消息 
  *  
  * @author xiangli

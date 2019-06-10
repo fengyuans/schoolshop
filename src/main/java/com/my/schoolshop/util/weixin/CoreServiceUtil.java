@@ -1,13 +1,15 @@
 package com.my.schoolshop.util.weixin;
 
+import com.my.schoolshop.util.baidu.BaiduMap;
+import com.my.schoolshop.util.baidu.Point;
+import com.my.schoolshop.util.weixin.message.resp.TextMessage;
+
 import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.imooc.myo2o.util.baidu.BaiduMap;
-import com.imooc.myo2o.util.baidu.Point;
-import com.imooc.myo2o.util.weixin.message.resp.TextMessage;
+
 
 /**
  * 核心服务类

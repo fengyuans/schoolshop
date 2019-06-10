@@ -104,7 +104,13 @@ public class ShopManageController {
         Long shopId = HttpServletRequestUtil.getLong(request,"shopId");
         if(shopId > -1){
             Shop shop = shopService.getByShopId(shopId);
-            List<Area> areaList = areaService.getAreaList();
+            List<Area> areaList = new ArrayList<>();
+            try {
+                areaList = areaService.getAreaList();
+            }catch (Exception e){
+                modelMap.put("success", false);
+                modelMap.put("errMsg", e.toString());
+            }
             modelMap.put("shop",shop);
             modelMap.put("areaList",areaList);
             modelMap.put("success",true);

@@ -10,15 +10,13 @@
 		<property name="maxWaitMillis" value="${redis.pool.maxWait}" />
 		<property name="testOnBorrow" value="${redis.pool.testOnBorrow}" />
 	</bean>
-<!--
 	<bean id="jedisWritePool" class="com.my.schoolshop.cache.JedisPoolWriper"
 		depends-on="jedisPoolConfig">
 		<constructor-arg index="0" ref="jedisPoolConfig" />
 		<constructor-arg index="1" value="${redis.hostname}" />
 		<constructor-arg index="2" value="${redis.port}" type="int" />
 	</bean>
-	<bean id="jedisKeys" class="com.my.schoolshop.cache.JedisUtil$Keys"
-		scope="singleton">
+	<bean id="jedisKeys" class="com.my.schoolshop.cache.JedisUtil$Keys" scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>
 	<bean id="jedisStrings" class="com.my.schoolshop.cache.JedisUtil$Strings"
@@ -42,5 +40,5 @@
 		<property name="jedisPool">
 			<ref bean="jedisWritePool" />
 		</property>
-	</bean>-->
+	</bean>
 </beans>    
